@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   stages {
     stage('Clone') {
       steps {
@@ -26,5 +25,6 @@ pipeline {
         sh 'docker-compose down'
       }
     }
+
   }
 }
