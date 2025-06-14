@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./src/frontend
+    ports:
+      - "8080:80"
+
+  api:
+    build: ./src/api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    build: ./src/db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: devops_demo
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
